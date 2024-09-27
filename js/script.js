@@ -31,11 +31,17 @@ const renderPokemon= async (pokemon)=>{
     }
 }
 
+
 form.addEventListener('submit', (event)=>{
     event.preventDefault();
-    
+    if(input.value>648){
+        pokemonImage.style.display='none'
+        pokemonName.innerHTML='Não encontrado'
+        pokemonNumber.innerHTML=''
+    }
+    else{
     renderPokemon(input.value.toLowerCase())
-    
+    }
 })
 
 
@@ -47,7 +53,7 @@ buttonPrev.addEventListener('click', ()=>{
 });
 
 buttonNext.addEventListener('click', ()=>{
-    searchPokemon+=1
+    if(searchPokemon>=1&&searchPokemon<=648){searchPokemon+=1}
     renderPokemon(searchPokemon)
 });
 
